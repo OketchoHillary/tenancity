@@ -6,6 +6,5 @@ itsdangerous
 Jinja2
 MarkupSafe
 Werkzeug
-
 SQLAlchemy
 alembic

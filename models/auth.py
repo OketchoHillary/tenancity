@@ -1,12 +1,14 @@
 from datetime import datetime
 
+from flask_login import UserMixin
+
 from utils import db
 
 from flask_bcrypt import generate_password_hash, check_password_hash
 from sqlalchemy.orm import validates
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)

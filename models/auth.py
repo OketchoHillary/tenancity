@@ -20,6 +20,7 @@ class User(UserMixin, db.Model):
     admin = db.Column(db.Boolean, nullable=False, default=False)
     last_login = db.Column(db.DateTime, index=False, nullable=True)
     email_confirmed = db.Column(db.Boolean, default=False)
+    is_active = db.Column(db.Boolean, default=False)
 
     def __init__(self, contact, email, password):
         self.contact = contact
@@ -38,6 +39,7 @@ class User(UserMixin, db.Model):
         """
         db.session.add(self)
         db.session.commit()
+        db.session.rollback()
 
     def set_password(self, password):
         """Create hashed password."""

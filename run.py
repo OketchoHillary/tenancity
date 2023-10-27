@@ -4,10 +4,11 @@ from apps.admin.routes import admin_bp
 from models.auth import User
 from models.core import Business
 
-from utils import migrate, db, login_manager
+from utils import migrate, db, login_manager, mail
 
 from apps.auth.routes import auth_bp
 from apps.core.routes import core_bp
+
 
 def create_app():
     myapp = Flask(__name__)
@@ -16,6 +17,7 @@ def create_app():
     myapp.register_blueprint(core_bp)
     myapp.register_blueprint(auth_bp, url_prefix='/accounts')
     myapp.register_blueprint(admin_bp, url_prefix='/admin')
+    mail.init_app(myapp)
     db.init_app(myapp)
     login_manager.init_app(myapp)
     migrate.init_app(myapp, db)

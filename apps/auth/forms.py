@@ -13,5 +13,8 @@ class SignupForm(FlaskForm):
     """User Sign-up Form."""
     contact = StringField('Contact', validators=[DataRequired()])
     email = StringField('Email', validators=[Email(message='Enter a valid email.'), DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired(), Length(min=6, message='Select a stronger password.')])
-    confirm = PasswordField('Confirm Your Password', validators=[DataRequired(), EqualTo('password', message='Passwords must match.')])
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=6,
+                                                                            message='Select a stronger password.')])
+    confirm = PasswordField('Confirm Your Password', validators=[DataRequired(),
+                                                                 EqualTo('password',
+                                                                         message='Passwords must match.')])

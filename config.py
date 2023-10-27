@@ -34,15 +34,15 @@ class DevelopmentConfig(Config):
     DEBUG = True
 
     # mail setup
-    MAIL_SERVER = 'localhost'
+    MAIL_SERVER = 'in-v3.mailjet.com'
     MAIL_PORT = 587
-    MAIL_USE_TLS = False
-    MAIL_USE_SSL = False
+    # MAIL_USE_TLS = False
+    # MAIL_USE_SSL = False
     MAIL_DEBUG = DEBUG
     MAIL_USERNAME = env('MAIL_USERNAME')
     MAIL_PASSWORD = env('MAIL_PASSWORD')
     MAIL_DEFAULT_SENDER = 'info@denfainvt.com'
     MAIL_MAX_EMAILS = None
-    MAIL_SUPPRESS_SEND = TestingConfig.TESTING
+    # MAIL_SUPPRESS_SEND = TestingConfig.TESTING
     MAIL_ASCII_ATTACHMENTS = False
 

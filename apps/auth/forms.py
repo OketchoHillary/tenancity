@@ -18,3 +18,13 @@ class SignupForm(FlaskForm):
     confirm = PasswordField('Confirm Your Password', validators=[DataRequired(),
                                                                  EqualTo('password',
                                                                          message='Passwords must match.')])
+
+
+class EmailForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+
+
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField('Password', validators=[DataRequired()])
+    password2 = PasswordField(
+        'Repeat Password', validators=[DataRequired(), EqualTo('password')])

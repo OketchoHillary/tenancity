@@ -54,14 +54,17 @@ def activate(token):
     try:
         email = serializer.loads(token, salt='email-confirmation', max_age=3600)  # Token expiration time (1 hour)
         # user = next((user for user in users_db.values() if user['email'] == email), None)
-        user = User.query.filter(email=email).first()
+        user = User.query.filter_by(email=email).first()
         if user:
-            # user
-            user['active'] = True
-            return 'Account activated successfully.'
+            user.is_active = True
+            user.email_confirmed = True
+            user.save()
+            return redirect(url_for('auth.login'))
         else:
             return 'Invalid activation link.'
-    except:
+    except Exception as e:
+        print('mememe')
+        print(str(e))
         return 'Invalid or expired activation link.'
 
 

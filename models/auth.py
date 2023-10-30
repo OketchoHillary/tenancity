@@ -31,7 +31,7 @@ class User(UserMixin, db.Model):
         self.email_confirmed = False
 
     def __repr__(self):
-        return f"<User {self.username}>"
+        return f"<User {self.email}>"
 
     def save(self):
         """Save a user to the database.

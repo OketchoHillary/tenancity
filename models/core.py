@@ -84,6 +84,7 @@ class BusinessAdmins(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     business_id = db.Column(db.Integer, db.ForeignKey('business.id'), nullable=False)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'), nullable=False)
+    is_current = db.Column(db.Boolean, default=False)
 
     role = db.relationship('Roles', backref=db.backref('roles', lazy=True))
     user = db.relationship('User', backref=db.backref('businesses', lazy=True))

@@ -1,6 +1,5 @@
 from flask import request, jsonify, Blueprint
 
-from apps.auth.views import activate
 from apps.core.views import IndexView, DashboardView
 
 
@@ -10,6 +9,6 @@ core_bp = Blueprint('core', __name__, template_folder='templates', static_folder
 
 # Register the class-based view with the blueprint
 core_bp.add_url_rule('/', view_func=IndexView.as_view('index'))
-core_bp.add_url_rule('/<int:pk>/', view_func=DashboardView.as_view('dashboard'))
-core_bp.add_url_rule('/activate/<string:token>/', 'activate', activate)
+core_bp.add_url_rule('/dashboard/', view_func=DashboardView.as_view('dashboard'))
+
 
